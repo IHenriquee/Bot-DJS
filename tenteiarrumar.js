@@ -104,9 +104,12 @@ client.on('interactionCreate', (interaction) => {
 
 //antilink command
 
-const logCanal = interaction.guild.channels.cache.get(`1054481376038109328`)
+
 
 client.on("messageCreate", async (message) => {
+
+    const logCanal = message.guild.channels.cache.get(`1054481376038109328`)
+    
   if (message.author.bot) return;
     if (message.member.permissions.has(Discord.PermissionFlagsBits.Administrator)) return; // Caso o usuário tenha permissão de ADM, o bot vai permitir que o mesmo envie links
     if (message.content.toLocaleLowerCase().includes("http") || message.content.toLocaleLowerCase().includes("www")) {
