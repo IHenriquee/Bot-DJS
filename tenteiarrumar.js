@@ -109,12 +109,17 @@ client.on('interactionCreate', (interaction) => {
 client.on("messageCreate", async (message) => {
 
     const logCanal = message.guild.channels.cache.get(`1054481376038109328`)
-    
+
+    let embedLog = new Discord.EmbedBuilder()
+    .setTitle(`AntiLink Logs`)
+    .setDescription(`Membro: ${message.author}\nMensagem: ${message.content}\nChat: ${message.channel}`)
+    .setTimestamp()
+
   if (message.author.bot) return;
     if (message.member.permissions.has(Discord.PermissionFlagsBits.Administrator)) return; // Caso o usuário tenha permissão de ADM, o bot vai permitir que o mesmo envie links
-    if (message.content.toLocaleLowerCase().includes("http") || message.content.toLocaleLowerCase().includes("www")) {
+    if (message.content.toLocaleLowerCase().includes("http")) {
       message.delete()
-      message.channel.send(`❌ - ${message.author} Não envie links aqui no chat!`).then(() => {
+      message.channel.send(`❌ - ${message.author} Não é permitido que envie links neste chat!`).then(() => {
         logCanal.send({ content: `${message.author} enviou o link: ${message.content} em: ${message.channel}`})
       })
   }
