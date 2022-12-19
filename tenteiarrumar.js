@@ -120,7 +120,7 @@ client.on("messageCreate", async (message) => {
     if (message.content.toLocaleLowerCase().includes("http")) {
       message.delete()
       message.channel.send(`❌ - ${message.author} Não é permitido que envie links neste chat!`).then(() => {
-        logCanal.send({ content: `${message.author} enviou o link: ${message.content} em: ${message.channel}`})
+        logCanal.send({ embeds: [embedLog]})
       })
   }
 })
