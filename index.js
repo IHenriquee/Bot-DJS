@@ -14,11 +14,10 @@ client.on(`shardReady`, () => {
     console.log(`⚙️ - Meus Shards foram iniciados.`)
 }) // Se seus Shards forem iniciados corretamente vai aparecer no Terminar esta mensagem
 
-client.login(config.token).then(() => {
+client.login(config.tokena).then(() => {
     console.log(`⚡🚀 - ${client.user.username} foi iniciada(o) com sucesso!`) // Caso seu bot iniciar no Discord com sucesso, essa mensagem vai aparecer.
 }).catch(() => {
-    console.log(`❌ - Houve um erro ao iniciar ${client.user.username}`) // Caso seu bot aconteça algum erro para iniciar, essa mensagem vai aparecer.
+    console.log(`❌ - Houve um erro ao iniciar seu bot...`) // Caso seu bot aconteça algum erro para iniciar, essa mensagem vai aparecer.
 })
 
 // Um index simples mas funcional :D
-
