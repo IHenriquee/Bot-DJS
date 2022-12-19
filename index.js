@@ -14,6 +14,21 @@ client.on(`shardReady`, () => {
     console.log(`⚙️ - Meus Shards foram iniciados.`)
 }) // Se seus Shards forem iniciados corretamente vai aparecer no Terminar esta mensagem
 
+client.on('interactionCreate', (interaction) => {
+
+  if (interaction.type === Discord.InteractionType.ApplicationCommand) {
+
+    const cmd = client.slashCommands.get(interaction.commandName);
+
+    if (!cmd) return interaction.reply(`Teste`);
+
+    interaction["member"] = interaction.guild.members.cache.get(interaction.user.id);
+
+    cmd.run(client, interaction)
+
+  }
+})
+
 client.slashCommands = new Discord.Collection()
 
 require('./handler')(client)
