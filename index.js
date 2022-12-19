@@ -14,10 +14,28 @@ client.on(`shardReady`, () => {
     console.log(`⚙️ - Meus Shards foram iniciados.`)
 }) // Se seus Shards forem iniciados corretamente vai aparecer no Terminar esta mensagem
 
+client.slashCommands = new Discord.Collection()
+
+require('./handler')(client)
+
 client.login(config.tokena).then(() => {
     console.log(`⚡🚀 - ${client.user.username} foi iniciada(o) com sucesso!`) // Caso seu bot iniciar no Discord com sucesso, essa mensagem vai aparecer.
 }).catch(() => {
     console.log(`❌ - Houve um erro ao iniciar seu bot...`) // Caso seu bot aconteça algum erro para iniciar, essa mensagem vai aparecer.
 })
+
+process.on('multipleResolves', (type, reason, promise) => {
+  console.log(`🚫 Erro Detectado\n\n` + type, promise, reason)
+});
+process.on('unhandRejection', (reason, promise) => {
+  console.log(`🚫 Erro Detectado:\n\n` + reason, promise)
+});
+process.on('uncaughtException', (error, origin) => {
+  console.log(`🚫 Erro Detectado:\n\n` + error, origin)
+});
+process.on('uncaughtExceptionMonitor', (error, origin) => {
+  console.log(`🚫 Erro Detectado:\n\n` + error, origin)
+});
+
 
 // Um index simples mas funcional :D
