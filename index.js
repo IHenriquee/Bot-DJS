@@ -18,7 +18,7 @@ client.slashCommands = new Discord.Collection()
 
 require('./handler')(client)
 
-client.login(config.tokena).then(() => {
+client.login(config.token).then(() => {
     console.log(`⚡🚀 - ${client.user.username} foi iniciada(o) com sucesso!`) // Caso seu bot iniciar no Discord com sucesso, essa mensagem vai aparecer.
 }).catch(() => {
     console.log(`❌ - Houve um erro ao iniciar seu bot...`) // Caso seu bot aconteça algum erro para iniciar, essa mensagem vai aparecer.
