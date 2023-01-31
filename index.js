@@ -1,4 +1,4 @@
-// Index feita por: IHenriquee#8056 para Mercury. 🪐#8913
+
 
 const config = require(`./config.json`) // Aqui ele está buscando o arquivo config.json (Caso você mudar onde ele está, é preciso mudar aqui também)
 
@@ -39,18 +39,15 @@ client.login(config.token).then(() => {
     console.log(`❌ - Houve um erro ao iniciar seu bot...`) // Caso seu bot aconteça algum erro para iniciar, essa mensagem vai aparecer.
 })
 
-process.on('multipleResolves', (type, reason, promise) => {
-  console.log(`🚫 Erro Detectado\n\n` + type, promise, reason)
+
+// SISTEMA ANTI CRASH
+process.on("uncaughtException", (err) => {
+    console.log("Uncaught Exception: " + err);
 });
-process.on('unhandRejection', (reason, promise) => {
-  console.log(`🚫 Erro Detectado:\n\n` + reason, promise)
-});
-process.on('uncaughtException', (error, origin) => {
-  console.log(`🚫 Erro Detectado:\n\n` + error, origin)
-});
-process.on('uncaughtExceptionMonitor', (error, origin) => {
-  console.log(`🚫 Erro Detectado:\n\n` + error, origin)
+  
+process.on("unhandledRejection", (reason, promise) => {
+    console.log("[GRAVE] Rejeição possivelmente não tratada em: Promise ", promise, " motivo: ", reason.message);
 });
 
 
-// Um index simples mas funcional :D
+
